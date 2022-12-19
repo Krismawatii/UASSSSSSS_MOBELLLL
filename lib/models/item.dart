@@ -2,7 +2,7 @@ class Item {
   int? id;
   String? nama;
   String? alamat;
-  int? nim;
+  String? nim;
 
   Item({this.id, this.nama, this.alamat, this.nim});
 
