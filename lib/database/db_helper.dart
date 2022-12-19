@@ -14,69 +14,63 @@ class DbHelper {
   final String columnNim = 'nim';
 
   DbHelper._internal();
-   factory DbHelper() => _instance;
+  factory DbHelper() => _instance;
 
-
-
-    Future<Database?> get _db  async {
-        if (_database != null) {
-            return _database;
-        }
-        _database = await _initDb();
-        return _database;
+  Future<Database?> get _db async {
+    if (_database != null) {
+      return _database;
     }
+    _database = await _initDb();
+    return _database;
+  }
 
+  Future<Database?> _initDb() async {
+    String databasePath = await getDatabasesPath();
+    String path = join(databasePath, 'item.db');
 
-    Future<Database?> _initDb() async {
-        String databasePath = await getDatabasesPath();
-        String path = join(databasePath, 'item.db');
-        
-        return await openDatabase(path, version: 1, onCreate: _onCreate);
-    }
+    return await openDatabase(path, version: 1, onCreate: _onCreate);
+  }
 
-    //membuat tabel dan field-fieldnya
-    Future<void> _onCreate(Database db, int version) async {
-        var sql = "CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY, "
-            "$columnName TEXT,"
-            "$columnAlamat TEXT,"
-            "$columnNim TEXT,"
-            
-             await db.execute(sql);
-    }
+  //membuat tabel dan field-fieldnya
+  Future<void> _onCreate(Database db, int version) async {
+    var sql = "CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY, "
+        "$columnName TEXT,"
+        "$columnAlamat TEXT,"
+        "$columnNim TEXT,";
 
-    //insert
-     Future<int?> saveItem(Item item) async {
-        var dbClient = await _db;
-        return await dbClient!.insert(tableName, item.toMap());
-    }
+    await db.execute(sql);
+  }
 
-    //read database
-    Future<List?> getAllItem() async {
-        var dbClient = await _db;
-        var result = await dbClient!.query(tableName, columns: [
-            columnId,
-            columnName,
-            columnAlamat,
-            columnNim,
-        ]);
-        
-        return result.toList();
-    }
+  //insert
+  Future<int?> saveItem(Item item) async {
+    var dbClient = await _db;
+    return await dbClient!.insert(tableName, item.toMap());
+  }
 
-    //update database
-    Future<int?> updateItem(Item item) async {
-        var dbClient = await _db;
-        return await dbClient!.update(tableName, item.toMap(), where: '$columnId = ?', whereArgs: [item.id]);
+  //read database
+  Future<List?> getAllItem() async {
+    var dbClient = await _db;
+    var result = await dbClient!.query(tableName, columns: [
+      columnId,
+      columnName,
+      columnAlamat,
+      columnNim,
+    ]);
 
-    }
+    return result.toList();
+  }
 
-     //hapus database
-    Future<int?> deleteItem(int id) async {
-        var dbClient = await _db;
-        return await dbClient!.delete(tableName, where: '$columnId = ?', whereArgs: [id]);
-    }
+  //update database
+  Future<int?> updateItem(Item item) async {
+    var dbClient = await _db;
+    return await dbClient!.update(tableName, item.toMap(),
+        where: '$columnId = ?', whereArgs: [item.id]);
+  }
 
-
-
+  //hapus database
+  Future<int?> deleteItem(int id) async {
+    var dbClient = await _db;
+    return await dbClient!
+        .delete(tableName, where: '$columnId = ?', whereArgs: [id]);
+  }
 }
-
