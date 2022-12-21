@@ -92,9 +92,21 @@ class _Homepage extends State<HomePage> {
                     margin: const EdgeInsets.only(left: 50, right: 50, top: 10),
                     // margin: const EdgeInsets.only(top: 20),,
                   ),
-                  // ~~~~~~~~~~~~~~ End of Input Nama ~~~~~~~~~~~~~~~~~~~
+                  // ~~~~~~~~~~~~~~ End of Input Alamat ~~~~~~~~~~~~~~~~~~~
 
                   // ~~~~~~~~~~~~~~~~ Radio Button ~~~~~~~~~~~~~~~~
+                  Container(
+                    child: Row(
+                      children: [
+                        Expanded(
+                            child: Text(
+                          'Jenis Kelamin :',
+                          style: TextStyle(fontSize: 16),
+                        ))
+                      ],
+                    ),
+                    margin: EdgeInsets.only(left: 50, top: 20),
+                  ),
                   Container(
                     child: Row(children: <Widget>[
                       Expanded(
@@ -126,7 +138,7 @@ class _Homepage extends State<HomePage> {
                         ),
                       ),
                     ]),
-                    margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                    margin: EdgeInsets.only(left: 30, right: 35),
                   ),
                   Container(
                       margin: EdgeInsets.only(top: 20),
