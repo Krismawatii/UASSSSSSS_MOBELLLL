@@ -56,21 +56,26 @@ class _Homepage extends State<HomePage> {
                   // ~~~~~~~~~~~~~~ End of Input Tittle ~~~~~~~~~~~~~~~~~~~
 
                   // ~~~~~~~~~~~~~~~~ Input NIM ~~~~~~~~~~~~~~~~
+
                   Container(
-                    child: TextField(
-                      decoration: InputDecoration(label: Text('NIM :')),
-                      keyboardType: TextInputType.number,
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                      // controller: nim,
-                    ),
-                    margin: const EdgeInsets.only(left: 50, right: 50, top: 20),
-                  ),
+                      child: TextField(
+                        decoration: InputDecoration(label: Text('NIM :')),
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
+                        // controller: nim,
+                      ),
+                      margin:
+                          const EdgeInsets.only(left: 50, right: 50, top: 20),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5.0))),
                   // ~~~~~~~~~~~~~~ End of Input NIM ~~~~~~~~~~~~~~~~~~~
 
                   // ~~~~~~~~~~~~~~~~ Input Nama ~~~~~~~~~~~~~~~~
                   Container(
                     child: TextField(
-                      decoration: InputDecoration(label: Text('Name :')),
+                      decoration: InputDecoration(label: Text('Nama :')),
                       // controller: nama,
                     ),
                     margin: const EdgeInsets.only(left: 50, right: 50, top: 10),
