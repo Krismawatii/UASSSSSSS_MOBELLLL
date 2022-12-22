@@ -74,13 +74,13 @@ class DbHelper {
         .delete(tableName, where: '$columnId = ?', whereArgs: [id]);
   }
 
-  Future<List<Item>> getItemList() async {
-    var itemMapList = await select();
-    int count = itemMapList.length;
-    List<Item> itemList = List<Item>();
-    for (int i = 0; i < count; i++) {
-      itemList.add(Item.fromMap(itemMapList[i]));
-    }
-    return itemList;
-  }
+  // Future<List<Item>> getItemList() async {
+  //   var itemMapList = await select();
+  //   int count = itemMapList.length;
+  //   List<Item> itemList = List<Item>();
+  //   for (int i = 0; i < count; i++) {
+  //     itemList.add(Item.fromMap(itemMapList[i]));
+  //   }
+  //   return itemList;
+  // }
 }

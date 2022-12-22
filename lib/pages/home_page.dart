@@ -58,27 +58,29 @@ class _Homepage extends State<HomePage> {
                   // ~~~~~~~~~~~~~~~~ Input NIM ~~~~~~~~~~~~~~~~
 
                   Container(
-                      child: TextField(
-                        decoration: InputDecoration(label: Text('NIM :')),
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly
-                        ],
-                        // controller: nim,
-                      ),
-                      margin:
-                          const EdgeInsets.only(left: 50, right: 50, top: 20),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0))),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          label: Text('NIM :'),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0))),
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                      // controller: nim,
+                    ),
+                    margin: EdgeInsets.only(left: 50, right: 50, top: 20),
+                  ),
                   // ~~~~~~~~~~~~~~ End of Input NIM ~~~~~~~~~~~~~~~~~~~
 
                   // ~~~~~~~~~~~~~~~~ Input Nama ~~~~~~~~~~~~~~~~
                   Container(
                     child: TextField(
-                      decoration: InputDecoration(label: Text('Nama :')),
+                      decoration: InputDecoration(
+                          label: Text('Nama :'),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0))),
                       // controller: nama,
                     ),
-                    margin: const EdgeInsets.only(left: 50, right: 50, top: 10),
+                    margin: const EdgeInsets.only(left: 50, right: 50, top: 20),
                     // margin: const EdgeInsets.only(top: 20),,
                   ),
                   // ~~~~~~~~~~~~~~ End of Input Nama ~~~~~~~~~~~~~~~~~~~
@@ -86,32 +88,29 @@ class _Homepage extends State<HomePage> {
                   // ~~~~~~~~~~~~~~~~ Input Alamat ~~~~~~~~~~~~~~~~
                   Container(
                     child: TextField(
-                      decoration: InputDecoration(label: Text('Alamat :')),
+                      decoration: InputDecoration(
+                          label: Text('Alamat :'),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0))),
                       // controller: alamat,
                     ),
-                    margin: const EdgeInsets.only(left: 50, right: 50, top: 10),
+                    margin: const EdgeInsets.only(left: 50, right: 50, top: 20),
                     // margin: const EdgeInsets.only(top: 20),,
                   ),
                   // ~~~~~~~~~~~~~~ End of Input Alamat ~~~~~~~~~~~~~~~~~~~
 
                   // ~~~~~~~~~~~~~~~~ Radio Button ~~~~~~~~~~~~~~~~
-                  Container(
-                    child: Row(
-                      children: [
-                        Expanded(
-                            child: Text(
-                          'Jenis Kelamin :',
-                          style: TextStyle(fontSize: 16),
-                        ))
-                      ],
-                    ),
-                    margin: EdgeInsets.only(left: 50, top: 20),
-                  ),
+
                   Container(
                     child: Row(children: <Widget>[
                       Expanded(
+                          child: Text(
+                        'Jenis Kelamin :',
+                        style: TextStyle(fontSize: 16),
+                      )),
+                      Expanded(
                         child: ListTile(
-                          title: Text('Laki-Laki'),
+                          title: Text('L'),
                           leading: Radio<Gender>(
                             value: Gender.male,
                             groupValue: _gender,
@@ -125,7 +124,7 @@ class _Homepage extends State<HomePage> {
                       ),
                       Expanded(
                         child: ListTile(
-                          title: Text('Perempuan'),
+                          title: Text('P'),
                           leading: Radio<Gender>(
                             value: Gender.female,
                             groupValue: _gender,
@@ -138,12 +137,12 @@ class _Homepage extends State<HomePage> {
                         ),
                       ),
                     ]),
-                    margin: EdgeInsets.only(left: 30, right: 35),
+                    margin: EdgeInsets.only(left: 50, right: 35, top: 20),
                   ),
                   Container(
                       margin: EdgeInsets.only(top: 20),
                       child: ElevatedButton(
-                        child: Text("Submit"),
+                        child: Text("Add"),
                         onPressed: () {
                           // item = Item(
                           //   nimController.toString(),
