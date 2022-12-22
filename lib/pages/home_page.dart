@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,6 +10,34 @@ enum Gender { male, female }
 class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _Homepage();
+}
+
+class ListJoss extends StatelessWidget {
+  final String nim;
+  final String nama;
+
+  const ListJoss({super.key, required this.nim, required this.nama});
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: new EdgeInsets.all(20.0),
+      child: new Center(
+        child: new Column(
+          children: <Widget>[
+            new Text(
+              nim,
+              style: new TextStyle(fontSize: 20.0),
+            ),
+            new Text(
+              nama,
+              style: new TextStyle(fontSize: 20.0),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 class _Homepage extends State<HomePage> {
@@ -142,7 +172,7 @@ class _Homepage extends State<HomePage> {
                   Container(
                       margin: EdgeInsets.only(top: 20),
                       child: ElevatedButton(
-                        child: Text("Add"),
+                        child: Text("Save"),
                         onPressed: () {
                           // item = Item(
                           //   nimController.toString(),
@@ -157,10 +187,8 @@ class _Homepage extends State<HomePage> {
                 ],
               ),
               Column(
-                children: [
-                  Container(
-                    child: Text('Test'),
-                  )
+                children: <Widget>[
+                  new ListJoss(nim: "2041720068", nama: "Faiz")
                 ],
               )
             ],
