@@ -74,7 +74,8 @@ class _Homepage extends State<HomePage> {
                 children: [
                   // ~~~~~~~~~~~~~~~~ Tittle ~~~~~~~~~~~~~~~~
                   Container(
-                    child: Text(
+                    margin: const EdgeInsets.only(top: 50),
+                    child: const Text(
                       'BIODATA',
                       style: TextStyle(
                         fontSize: 20,
@@ -82,50 +83,49 @@ class _Homepage extends State<HomePage> {
                         letterSpacing: 1.5,
                       ),
                     ),
-                    margin: const EdgeInsets.only(top: 50),
                   ),
                   // ~~~~~~~~~~~~~~ End of Input Tittle ~~~~~~~~~~~~~~~~~~~
 
                   // ~~~~~~~~~~~~~~~~ Input NIM ~~~~~~~~~~~~~~~~
 
                   Container(
+                    margin: const EdgeInsets.only(left: 50, right: 50, top: 20),
                     child: TextField(
                       decoration: InputDecoration(
-                          label: Text('NIM :'),
+                          label: const Text('NIM :'),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.0))),
                       keyboardType: TextInputType.number,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       controller: nimController,
                     ),
-                    margin: EdgeInsets.only(left: 50, right: 50, top: 20),
                   ),
                   // ~~~~~~~~~~~~~~ End of Input NIM ~~~~~~~~~~~~~~~~~~~
 
                   // ~~~~~~~~~~~~~~~~ Input Nama ~~~~~~~~~~~~~~~~
                   Container(
+                    margin: const EdgeInsets.only(left: 50, right: 50, top: 20),
                     child: TextField(
                       decoration: InputDecoration(
-                          label: Text('Nama :'),
+                          label: const Text('Nama :'),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.0))),
                       controller: namaController,
                     ),
-                    margin: const EdgeInsets.only(left: 50, right: 50, top: 20),
                     // margin: const EdgeInsets.only(top: 20),,
                   ),
                   // ~~~~~~~~~~~~~~ End of Input Nama ~~~~~~~~~~~~~~~~~~~
 
                   // ~~~~~~~~~~~~~~~~ Input Alamat ~~~~~~~~~~~~~~~~
                   Container(
+                    margin: const EdgeInsets.only(left: 50, right: 50, top: 20),
                     child: TextField(
                       decoration: InputDecoration(
-                          label: Text('Alamat :'),
+                          label: const Text('Alamat :'),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.0))),
                       controller: alamatController,
                     ),
-                    margin: const EdgeInsets.only(left: 50, right: 50, top: 20),
                     // margin: const EdgeInsets.only(top: 20),,
                   ),
                   // ~~~~~~~~~~~~~~ End of Input Alamat ~~~~~~~~~~~~~~~~~~~
@@ -133,8 +133,9 @@ class _Homepage extends State<HomePage> {
                   // ~~~~~~~~~~~~~~~~ Radio Button ~~~~~~~~~~~~~~~~
 
                   Container(
+                    margin: const EdgeInsets.only(left: 50, right: 35, top: 20),
                     child: Row(children: <Widget>[
-                      Expanded(
+                      const Expanded(
                           child: Text(
                         'Jenis Kelamin :',
                         style: TextStyle(fontSize: 16),
@@ -155,7 +156,7 @@ class _Homepage extends State<HomePage> {
                       ),
                       Expanded(
                         child: ListTile(
-                          title: Text('P'),
+                          title: const Text('P'),
                           leading: Radio<Gender>(
                             value: Gender.female,
                             groupValue: _gender,
@@ -168,12 +169,10 @@ class _Homepage extends State<HomePage> {
                         ),
                       ),
                     ]),
-                    margin: EdgeInsets.only(left: 50, right: 35, top: 20),
                   ),
                   Container(
-                      margin: EdgeInsets.only(top: 20),
+                      margin: const EdgeInsets.only(top: 20),
                       child: ElevatedButton(
-                        child: Text("Save"),
                         onPressed: () {
                           DbHelper().saveItem(Item(
                               Random().nextInt(999999),
@@ -182,7 +181,9 @@ class _Homepage extends State<HomePage> {
                               alamatController.text));
                         },
                         style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.only(left: 30, right: 30)),
+                            padding:
+                                const EdgeInsets.only(left: 30, right: 30)),
+                        child: const Text("Save"),
                       )),
                   // ~~~~~~~~~~~~~~ End of Radio Button ~~~~~~~~~~~~~~~~~~~
                 ],
