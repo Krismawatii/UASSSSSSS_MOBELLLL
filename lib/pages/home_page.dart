@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:uas_kelompok3/database/db_helper.dart';
 import 'package:uas_kelompok3/models/item.dart';
 
 enum Gender { male, female }
@@ -23,7 +26,7 @@ class _Homepage extends State<HomePage> {
   final alamatController = TextEditingController();
 
   @override
-  Widget build(Object context) {
+  Widget build(BuildContext context) {
     return MaterialApp(
         home: DefaultTabController(
       length: 2,
@@ -65,7 +68,7 @@ class _Homepage extends State<HomePage> {
                               borderRadius: BorderRadius.circular(5.0))),
                       keyboardType: TextInputType.number,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                      // controller: nim,
+                      controller: nimController,
                     ),
                     margin: EdgeInsets.only(left: 50, right: 50, top: 20),
                   ),
@@ -78,7 +81,7 @@ class _Homepage extends State<HomePage> {
                           label: Text('Nama :'),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.0))),
-                      // controller: nama,
+                      controller: namaController,
                     ),
                     margin: const EdgeInsets.only(left: 50, right: 50, top: 20),
                     // margin: const EdgeInsets.only(top: 20),,
@@ -92,7 +95,7 @@ class _Homepage extends State<HomePage> {
                           label: Text('Alamat :'),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.0))),
-                      // controller: alamat,
+                      controller: alamatController,
                     ),
                     margin: const EdgeInsets.only(left: 50, right: 50, top: 20),
                     // margin: const EdgeInsets.only(top: 20),,
@@ -142,13 +145,13 @@ class _Homepage extends State<HomePage> {
                   Container(
                       margin: EdgeInsets.only(top: 20),
                       child: ElevatedButton(
-                        child: Text("Add"),
+                        child: Text("Save"),
                         onPressed: () {
-                          // item = Item(
-                          //   nimController.toString(),
-                          //   namaController.text,
-                          //   alamatController.text,
-                          // );
+                          DbHelper().saveItem(Item(
+                              Random().nextInt(999999),
+                              nimController.text,
+                              namaController.text,
+                              alamatController.text));
                         },
                         style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.only(left: 30, right: 30)),

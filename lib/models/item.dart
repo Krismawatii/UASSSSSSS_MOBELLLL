@@ -4,7 +4,7 @@ class Item {
   String? alamat;
   String? nim;
 
-  Item({this.id, this.nama, this.alamat, this.nim});
+  Item(this.id, this.nama, this.alamat, this.nim);
 
   Map<String, dynamic> toMap() {
     var map = Map<String, dynamic>();
