@@ -1,27 +1,41 @@
 class Item {
-  int? id;
-  String? nama;
-  String? alamat;
-  String? nim;
+  int _nim;
+  String _nama;
+  String _alamat;
+  String _jeniskelamin;
 
-  Item(this.id, this.nama, this.alamat, this.nim);
+  int get nim => this._nim;
 
-  Map<String, dynamic> toMap() {
-    var map = Map<String, dynamic>();
-    if (id != null) {
-      map['id'] = id;
-    }
-    map['nama'] = nama;
-    map['alamat'] = alamat;
-    map['nim'] = nim;
+  set nim(int value) => this._nim = value;
 
-    return map;
-  }
+  String get nama => this._nama;
+
+  set nama(String value) => this._nama = value;
+
+  String get alamat => this._alamat;
+
+  set alamat(String value) => this._alamat = value;
+
+  String get jeniskelamin => this._jeniskelamin;
+
+  set jeniskelamin(String value) => this._jeniskelamin = value;
+
+//KOnstruksi versi 1
+  Item(this._nim, this._nama, this._alamat, this._jeniskelamin);
 
   Item.fromMap(Map<String, dynamic> map) {
-    this.id = map['id'];
-    this.nama = map['nama'];
-    this.alamat = map['alamat'];
-    this.nim = map['nim'];
+    this._nim = map['nim'];
+    this._nama = map['nama'];
+    this._alamat = map['alamat'];
+    this._jeniskelamin = map['jenis kelamin'];
+  }
+
+  Map<String, dynamic> toMap() {
+    Map<String, dynamic> map = Map<String, dynamic>();
+    map['nim'] = this._nim;
+    map['nama'] = this._nama;
+    map['alamat'] = this._alamat;
+    map['jenis kelamin'] = this._jeniskelamin;
+    return map;
   }
 }
