@@ -27,7 +27,7 @@ class DbHelper {
   static Future<void> _createDb(db.Database db) async {
     await db.execute('''
   CREATE TABLE item(
-    id INTEGER PRIMARY KEY AUTO INCREMENT,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     nim INTEGER,
     nama TEXT,
     alamat TEXT,
