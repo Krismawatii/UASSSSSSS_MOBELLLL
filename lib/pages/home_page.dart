@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uas_kelompok3/models/item.dart';
-import 'package:uas_kelompok3/pages/page_biodata.dart';
+import 'package:uas_kelompok3/pages/biodata_page.dart';
 
 class HomePage extends StatelessWidget {
   List<Item> itemList;

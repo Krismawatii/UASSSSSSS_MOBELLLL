@@ -27,7 +27,7 @@ class Item {
     this._nim = map['nim'];
     this._nama = map['nama'];
     this._alamat = map['alamat'];
-    this._jeniskelamin = map['jenis kelamin'];
+    this._jeniskelamin = map['jeniskelamin'];
   }
 
   Map<String, dynamic> toMap() {
@@ -35,7 +35,7 @@ class Item {
     map['nim'] = this._nim;
     map['nama'] = this._nama;
     map['alamat'] = this._alamat;
-    map['jenis kelamin'] = this._jeniskelamin;
+    map['jeniskelamin'] = this._jeniskelamin;
     return map;
   }
 }
