@@ -191,13 +191,45 @@ class _Homepage extends State<HomePage> {
                   // ~~~~~~~~~~~~~~ End of Radio Button ~~~~~~~~~~~~~~~~~~~
                 ],
               ),
-              Column(
-                children: <Widget>[
-                  // new ListJoss(nim: "2041720068", nama: "Faiz")
-                ],
-              )
+              // Column(
+              //   children: <Widget>[
+              //     // new ListJoss(nim: "2041720068", nama: "Faiz")
+              //   ],
+              // )
             ],
           )),
     ));
+  }
+
+  Future<void> addItem(Item item) async {
+    print('yuhu');
+    int result = await DbHelper.insert(item);
+    if (!mounted) return;
+    if (result > 0) {
+      ShowAlertDialog(context);
+    }
+  }
+
+  ShowAlertDialog(BuildContext context) {
+    Item item;
+    Widget ButtonOk = MaterialButton(
+      child: Text("OKE"),
+      onPressed: () {},
+    );
+
+    AlertDialog alert = AlertDialog(
+      title: Text("Success"),
+      content: Text("Data berhasil ditambahkan"),
+      actions: [
+        ButtonOk,
+      ],
+    );
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 }
