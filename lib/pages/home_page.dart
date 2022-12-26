@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:uas_kelompok3/database/db_helper.dart';
+import 'package:uas_kelompok3/database/DbHelper.dart';
 import 'package:uas_kelompok3/models/item.dart';
 
 enum Gender { male, female }
@@ -13,37 +13,39 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _Homepage();
 }
 
-class ListJoss extends StatelessWidget {
-  final String nim;
-  final String nama;
+Item item;
 
-  const ListJoss({super.key, required this.nim, required this.nama});
+//class ListJoss extends StatelessWidget {
+// final String nim;
+// final String nama;
 
-  @override
-  Widget build(BuildContext context) {
-    return new Container(
-      padding: new EdgeInsets.all(20.0),
-      child: new Center(
-        child: new Column(
-          children: <Widget>[
-            new Text(
-              nim,
-              style: new TextStyle(fontSize: 20.0),
-            ),
-            new Text(
-              nama,
-              style: new TextStyle(fontSize: 20.0),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+// const ListJoss({super.key, required this.nim, required this.nama});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return new Container(
+//       padding: new EdgeInsets.all(20.0),
+//       child: new Center(
+//         child: new Column(
+//           children: <Widget>[
+//             new Text(
+//               _nim,
+//               style: new TextStyle(fontSize: 20.0),
+//             ),
+//             new Text(
+//               nama,
+//               style: new TextStyle(fontSize: 20.0),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class _Homepage extends State<HomePage> {
   // Radio Button
-  Gender? _gender = Gender.male;
+  Gender _gender = Gender.male;
 
   // Model
   // Item item;
@@ -146,7 +148,7 @@ class _Homepage extends State<HomePage> {
                           leading: Radio<Gender>(
                             value: Gender.male,
                             groupValue: _gender,
-                            onChanged: ((Gender? value) {
+                            onChanged: ((Gender value) {
                               setState(() {
                                 _gender = value;
                               });
@@ -160,7 +162,7 @@ class _Homepage extends State<HomePage> {
                           leading: Radio<Gender>(
                             value: Gender.female,
                             groupValue: _gender,
-                            onChanged: ((Gender? value) {
+                            onChanged: ((Gender value) {
                               setState(() {
                                 _gender = value;
                               });
@@ -174,11 +176,12 @@ class _Homepage extends State<HomePage> {
                       margin: const EdgeInsets.only(top: 20),
                       child: ElevatedButton(
                         onPressed: () {
-                          DbHelper().saveItem(Item(
-                              Random().nextInt(999999),
-                              nimController.text,
-                              namaController.text,
-                              alamatController.text));
+                          DbHelper.insert(Item(
+                            Random().nextInt(999999),
+                            namaController.text,
+                            alamatController.text,
+                            nimController.text,
+                          ));
                         },
                         style: ElevatedButton.styleFrom(
                             padding:
@@ -190,7 +193,7 @@ class _Homepage extends State<HomePage> {
               ),
               Column(
                 children: <Widget>[
-                  new ListJoss(nim: "2041720068", nama: "Faiz")
+                  // new ListJoss(nim: "2041720068", nama: "Faiz")
                 ],
               )
             ],

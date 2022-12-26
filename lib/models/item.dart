@@ -7,7 +7,7 @@ class Item {
   Item(this.id, this.nama, this.alamat, this.nim);
 
   Map<String, dynamic> toMap() {
-    var map = Map<String, dynamic>();
+    Map<String, dynamic> map = <String, dynamic>{};
     if (id != null) {
       map['id'] = id;
     }
@@ -19,9 +19,9 @@ class Item {
   }
 
   Item.fromMap(Map<String, dynamic> map) {
-    this.id = map['id'];
-    this.nama = map['nama'];
-    this.alamat = map['alamat'];
-    this.nim = map['nim'];
+    id = map['id'];
+    nama = map['nama'];
+    alamat = map['alamat'];
+    nim = map['nim'];
   }
 }
