@@ -7,6 +7,8 @@ import 'package:sqflite/sqlite_api.dart';
 import 'package:path/path.dart';
 import 'dart:async';
 
+import 'package:uas_kelompok3/pages/biodata_page.dart';
+
 class DbHelper {
   static DbHelper _dbHelper;
 
