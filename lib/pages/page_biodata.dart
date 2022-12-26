@@ -8,9 +8,9 @@ import 'package:uas_kelompok3/models/item.dart';
 
 enum Gender { male, female }
 
-class HomePage extends StatefulWidget {
+class BiodataPage extends StatefulWidget {
   @override
-  State<HomePage> createState() => _Homepage();
+  State<BiodataPage> createState() => _BiodataPage();
 }
 
 Item item;
@@ -43,7 +43,7 @@ Item item;
 //   }
 // }
 
-class _Homepage extends State<HomePage> {
+class _BiodataPage extends State<BiodataPage> {
   // Radio Button
   Gender _gender = Gender.male;
 
