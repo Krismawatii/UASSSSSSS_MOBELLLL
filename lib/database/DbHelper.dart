@@ -54,15 +54,15 @@ class DbHelper {
   //UPDATE
   static Future<int> update(Item object) async {
     final db = await DbHelper.initDb();
-    int count = await db.update('item', object.toMap(),
-        where: 'nim=?', whereArgs: [object.nim]);
+    int count = await db
+        .update('item', object.toMap(), where: 'id=?', whereArgs: [object.id]);
     return count;
   }
 
   //DELETE
-  static Future<int> delete(int nim) async {
+  static Future<int> delete(int id) async {
     final db = await DbHelper.initDb();
-    int count = await db.delete('item', where: 'nim=?', whereArgs: [nim]);
+    int count = await db.delete('item', where: 'id=?', whereArgs: [id]);
     return count;
   }
 

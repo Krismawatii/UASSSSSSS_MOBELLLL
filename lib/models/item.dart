@@ -1,8 +1,13 @@
 class Item {
+  int _id;
   int _nim;
   String _nama;
   String _alamat;
   String _jeniskelamin;
+
+  int get id => this._id;
+
+  set id(int value) => this._id = value;
 
   int get nim => this._nim;
 
@@ -24,6 +29,7 @@ class Item {
   Item(this._nim, this._nama, this._alamat, this._jeniskelamin);
 
   Item.fromMap(Map<String, dynamic> map) {
+    this._id = map['id'];
     this._nim = map['nim'];
     this._nama = map['nama'];
     this._alamat = map['alamat'];
@@ -32,6 +38,7 @@ class Item {
 
   Map<String, dynamic> toMap() {
     Map<String, dynamic> map = Map<String, dynamic>();
+    map['id'] = this._id;
     map['nim'] = this._nim;
     map['nama'] = this._nama;
     map['alamat'] = this._alamat;

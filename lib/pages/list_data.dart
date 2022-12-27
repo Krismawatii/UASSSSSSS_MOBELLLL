@@ -62,19 +62,20 @@ class _ListData extends State<ListData> {
                       backgroundColor: Colors.white,
                       textColor: Colors.black,
                     );
-                    _delete(_biodata[index].nim);
+                    _delete(_biodata[index].id);
                   }),
                 ),
                 title: Text(
                   _biodata[index].nama,
                   style: TextStyle(fontSize: 20),
                 ),
-                subtitle: Text('NIM : ${_biodata[index].nim}'),
+                subtitle: Text('NIM : ${_biodata[index].id}'),
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => Detail(
+                        id: int.parse(_biodata[index].id.toString()),
                         nim: int.parse(_biodata[index].nim.toString()),
                         nama: _biodata[index].nama.toString(),
                         alamat: _biodata[index].alamat.toString(),

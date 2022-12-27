@@ -1,23 +1,42 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:uas_kelompok3/database/DbHelper.dart';
 import 'package:uas_kelompok3/models/item.dart';
+import 'package:uas_kelompok3/pages/biodata_page.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:uas_kelompok3/pages/detail_page.dart';
 
-class BiodataPage extends StatefulWidget {
-  const BiodataPage({Key key}) : super(key: key);
+class EditPage extends StatefulWidget {
+  const EditPage({
+    Key key,
+    this.id,
+    this.nim,
+    this.nama,
+    this.alamat,
+    this.jeniskelamin,
+  }) : super(key: key);
+
+  final int id;
+  final int nim;
+  final String nama;
+  final String alamat;
+  final String jeniskelamin;
 
   @override
-  State<BiodataPage> createState() => _BiodataPage();
+  State<EditPage> createState() =>
+      // ignore: no_logic_in_create_state
+      _EditPage(id, nim, nama, alamat, jeniskelamin);
 }
 
 Item item;
 
 enum Gender { male, female }
 
-class _BiodataPage extends State<BiodataPage> {
+class _EditPage extends State<EditPage> {
+  // id
+  int id;
+
   // Radio Button
   Gender _gender = Gender.male;
 
@@ -29,6 +48,19 @@ class _BiodataPage extends State<BiodataPage> {
   final namaController = TextEditingController();
   final alamatController = TextEditingController();
 
+  _EditPage(
+    this.id,
+    int nim,
+    String nama,
+    String alamat,
+    String jeniskelamin,
+  ) {
+    nimController.text = nim.toString();
+    namaController.text = nama;
+    alamatController.text = alamat;
+    _gender = jeniskelamin == 'Laki-laki' ? Gender.male : Gender.female;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +70,7 @@ class _BiodataPage extends State<BiodataPage> {
           Container(
             margin: const EdgeInsets.only(top: 50),
             child: const Text(
-              'BIODATA',
+              'Edit',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -136,19 +168,22 @@ class _BiodataPage extends State<BiodataPage> {
               margin: const EdgeInsets.only(top: 20),
               child: ElevatedButton(
                 onPressed: () {
-                  DbHelper.insert(Item(
+                  Item item = Item(
                     int.parse(nimController.text),
                     namaController.text,
                     alamatController.text,
                     _gender.toString() == 'Gender.male'
                         ? 'Laki-laki'
                         : 'Perempuan',
-                  ));
+                  );
+
+                  item.id = id;
+                  DbHelper.update(item);
                   showDialog(
                       context: context,
                       builder: (ctx) => AlertDialog(
                             title: const Text("Success"),
-                            content: const Text("Data Berhasil Ditambahkan"),
+                            content: const Text("Data Berhasil Diupdate"),
                             actions: <Widget>[
                               TextButton(
                                   onPressed: () {
