@@ -17,47 +17,81 @@
 //     )
 //   }
 // }
+import 'dart:ffi';
+
+import 'package:uas_kelompok3/models/item.dart';
 import 'package:uas_kelompok3/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:uas_kelompok3/database/DbHelper.dart';
 import 'package:uas_kelompok3/pages/biodata_page.dart';
 import 'package:uas_kelompok3/pages/list_data.dart';
 
-class DetailPage extends StatelessWidget {
-  // const DetailPage({super.key});
-  const DetailPage({Key key, required}) : super(key: key);
+int globNim;
 
-  static const appTitle = 'Home';
+class Detail extends StatefulWidget {
+  Detail({Key key, this.nim, this.nama}) : super(key: key);
+
+  int nim;
+  String nama;
+
+  
+
+  @override
+  State<Detail> createState() => _detailPage();
+}
+
+class _detailPage extends State<Detail> {
+  List<Item> _biodata = [];
+   _detailPage({Key key, this.nama});
+  // const DetailPage({Key key, required}) : super(key: key);
+
+  Future<void> _getBiodata() async {
+    _biodata = await DbHelper.getItemList();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      initialIndex: 0,
-      length: 2,
-      child: Scaffold(
+    return MaterialApp(
+      home: Scaffold(
         appBar: AppBar(
-          title: const Text(appTitle),
-          bottom: const TabBar(
-            tabs: <Widget>[
-              Tab(
-                icon: Icon(Icons.article),
-                child: Text('Isi Data'),
-              ),
-              Tab(
-                icon: Icon(Icons.list),
-                child: Text('List Data'),
-              ),
-            ],
-          ),
+          backgroundColor: Color.fromARGB(0, 11, 127, 148),
+          title: Text("Detail Page"),
         ),
-        // body: const TabBarView(
-        //   children: <Widget>[
-        //     detail_page(),
-        //     list_data(),
-        //   ],
-        // ),
+        body: Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.only(left: 135, right: 100, top: 80),
+              child: Icon(
+                Icons.person,
+                size: 150,
+              ),
+            ),
+            Container(
+                margin: const EdgeInsets.only(left: 135, right: 100, top: 20),
+                child: FutureBuilder(
+                  future: _getBiodata(),
+                  builder: (context, snapshot) {
+                    _getBiodata();
+                  },
+                )),
+            Container(
+              margin: const EdgeInsets.only(left: 135, right: 100, top: 20),
+              child: Text(this.),
+            ),
+            Container(
+              margin: const EdgeInsets.only(left: 135, right: 100, top: 20),
+              child: Text(alamat),
+            ),
+            Container(
+              margin: const EdgeInsets.only(left: 135, right: 100, top: 20),
+              child: Text(jeniskelamin.toString()),
+            )
+          ],
+        ),
       ),
     );
+
+    // TODO: implement build
   }
 
   Widget buttonElevated() {
