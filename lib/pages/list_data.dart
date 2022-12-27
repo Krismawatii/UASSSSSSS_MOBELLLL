@@ -25,10 +25,7 @@ class _ListData extends State<ListData> {
   List<Item> _biodata = [];
 
   Future<void> _getBiodata() async {
-    List<Item> biodata = await DbHelper.getItemList();
-    setState(() {
-      _biodata = biodata;
-    });
+    _biodata = await DbHelper.getItemList();
   }
 
   Future<void> _delete(int id) async {
@@ -38,7 +35,7 @@ class _ListData extends State<ListData> {
 
   @override
   Widget build(BuildContext context) {
-    Expanded(
+    return Expanded(
         child: FutureBuilder(
       future: _getBiodata(),
       builder: (context, snapshot) {
@@ -66,11 +63,12 @@ class _ListData extends State<ListData> {
                 ),
                 title: Text(_biodata[index].nama),
                 subtitle: Padding(
+                    padding: const EdgeInsets.all(5.0),
                     child: Column(
-                  children: [
-                    Text('NIM : ${_biodata[index].nim}'),
-                  ],
-                )),
+                      children: [
+                        Text('NIM : ${_biodata[index].nim}'),
+                      ],
+                    )),
               ),
             );
           },
