@@ -6,6 +6,7 @@ import 'package:uas_kelompok3/database/DbHelper.dart';
 import 'package:uas_kelompok3/models/item.dart';
 import 'package:uas_kelompok3/pages/biodata_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:uas_kelompok3/pages/detail_page.dart';
 
 class ListData extends StatefulWidget {
   const ListData({
@@ -49,7 +50,7 @@ class _ListData extends State<ListData> {
                   onPressed: (() {}),
                 ),
                 trailing: IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.delete,
                     color: Colors.red,
                   ),
@@ -69,7 +70,19 @@ class _ListData extends State<ListData> {
                   style: TextStyle(fontSize: 20),
                 ),
                 subtitle: Text('NIM : ${_biodata[index].nim}'),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Detail(
+                        nim: int.parse(_biodata[index].nim.toString()),
+                        nama: _biodata[index].nama.toString(),
+                        alamat: _biodata[index].alamat.toString(),
+                        jeniskelamin: _biodata[index].jeniskelamin.toString(),
+                      ),
+                    ),
+                  );
+                },
               ),
             );
           },
