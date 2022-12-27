@@ -1,29 +1,4 @@
-// import 'package:flutter/cupertino.dart';
-// import 'package:flutter/material.dart';
-
-// class DetailPage extends StatelessWidget {
-//   //const DetailPage({Key key, required this.nim}) : super(key: key);
-//    const DetailPage({Key key, required});
-
-//   static const appTitle = 'Home';
-
-//   @override
-//   //State<DetailPage> createState() => _DetailPage();
-//   Widget build(BuildContext context){
-//     return Scaffold(
-//       body: Column(children: [
-
-//       ]),
-//     )
-//   }
-// }
-
-import 'package:uas_kelompok3/models/item.dart';
-import 'package:uas_kelompok3/pages/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:uas_kelompok3/database/DbHelper.dart';
-import 'package:uas_kelompok3/pages/biodata_page.dart';
-import 'package:uas_kelompok3/pages/list_data.dart';
 
 // ignore: must_be_immutable
 class Detail extends StatefulWidget {
@@ -109,11 +84,3 @@ class _detailPage extends State<Detail> {
     );
   }
 }
-
-// home: Scaffold(
-//           body: Container(
-//               child: ElevatedButton(
-//             onPressed: () {},
-//             child: Text("Back", style: TextStyle(fontSize: 20)),
-//           ))),
-//     );

@@ -1,10 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:uas_kelompok3/database/DbHelper.dart';
-import 'package:uas_kelompok3/models/item.dart';
 
 class BiodataPage extends StatefulWidget {
   @override
