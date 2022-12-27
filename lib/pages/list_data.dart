@@ -77,26 +77,5 @@ class _ListData extends State<ListData> {
         );
       },
     ));
-
-    return Scaffold(
-      body: ListView.builder(
-          itemCount: _biodata.length,
-          itemBuilder: (context, index) {
-            return Card(
-                child: ListTile(
-              leading: IconButton(
-                icon: Icon(Icons.person),
-                onPressed: () {},
-              ),
-              title: Row(children: <Widget>[
-                Text(_biodata[index].nama),
-                IconButton(
-                  icon: Icon(Icons.search),
-                  onPressed: () {},
-                )
-              ]),
-            ));
-          }),
-    );
   }
 }
