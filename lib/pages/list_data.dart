@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:uas_kelompok3/database/DbHelper.dart';
 import 'package:uas_kelompok3/models/item.dart';
 import 'package:uas_kelompok3/pages/biodata_page.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ListData extends StatefulWidget {
   const ListData({
@@ -17,37 +18,62 @@ class ListData extends StatefulWidget {
   final String nama;
 
   @override
-  State<ListData> createState() => _ListData(nim, nama);
+  State<ListData> createState() => _ListData();
 }
 
 class _ListData extends State<ListData> {
-  _ListData(String nim, String nama);
+  List<Item> _biodata = [];
 
-  List<Item> _items = <Item>[];
+  Future<void> _getBiodata() async {
+    _biodata = await DbHelper.getItemList();
+  }
+
+  Future<void> _delete(int id) async {
+    print(id);
+    await DbHelper.delete(id);
+  }
 
   @override
   Widget build(BuildContext context) {
-    var items = DbHelper.getItemList();
-
-    return Scaffold(
-      body: ListView.builder(
-          itemCount: items.length,
+    return Expanded(
+        child: FutureBuilder(
+      future: _getBiodata(),
+      builder: (context, snapshot) {
+        return ListView.builder(
+          itemCount: _biodata.length,
           itemBuilder: (context, index) {
             return Card(
-                child: ListTile(
-              leading: IconButton(
-                icon: Icon(Icons.person),
-                onPressed: () {},
+              child: ListTile(
+                leading: IconButton(
+                  icon: Icon(Icons.person),
+                  onPressed: (() {}),
+                ),
+                trailing: IconButton(
+                  icon: Icon(Icons.delete),
+                  onPressed: (() {
+                    Fluttertoast.showToast(
+                      msg: "Success Delete",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
+                      backgroundColor: Colors.white,
+                      textColor: Colors.black,
+                    );
+                    // _delete(_biodata[index].id);
+                  }),
+                ),
+                title: Text(_biodata[index].nama),
+                subtitle: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Column(
+                      children: [
+                        Text('NIM : ${_biodata[index].nim}'),
+                      ],
+                    )),
               ),
-              title: Row(children: <Widget>[
-                Text(items[index].nim),
-                IconButton(
-                  icon: Icon(Icons.search),
-                  onPressed: () {},
-                )
-              ]),
-            ));
-          }),
-    );
+            );
+          },
+        );
+      },
+    ));
   }
 }

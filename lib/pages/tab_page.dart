@@ -21,7 +21,7 @@ class TabPage extends StatelessWidget {
               ],
             ),
           ),
-          body: const TabBarView(children: <Widget>[
+          body: TabBarView(children: <Widget>[
             BiodataPage(),
             ListData(),
           ]),

@@ -12,6 +12,7 @@ void main() {
     initialRoute: '/',
     routes: {
       '/': (context) => HomePage(),
+      'list': (context) => ListData(),
     },
   ));
 }
