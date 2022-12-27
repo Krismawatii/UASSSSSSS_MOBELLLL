@@ -49,7 +49,10 @@ class _ListData extends State<ListData> {
                   onPressed: (() {}),
                 ),
                 trailing: IconButton(
-                  icon: Icon(Icons.delete),
+                  icon: Icon(
+                    Icons.delete,
+                    color: Colors.red,
+                  ),
                   onPressed: (() {
                     Fluttertoast.showToast(
                       msg: "Success Delete",
@@ -61,14 +64,11 @@ class _ListData extends State<ListData> {
                     _delete(_biodata[index].nim);
                   }),
                 ),
-                title: Text(_biodata[index].nama),
-                subtitle: Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Column(
-                      children: [
-                        Text('NIM : ${_biodata[index].nim}'),
-                      ],
-                    )),
+                title: Text(
+                  _biodata[index].nama,
+                  style: TextStyle(fontSize: 20),
+                ),
+                subtitle: Text('NIM : ${_biodata[index].nim}'),
                 onTap: () {},
               ),
             );

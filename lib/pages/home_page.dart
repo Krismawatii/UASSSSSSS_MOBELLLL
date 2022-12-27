@@ -31,7 +31,10 @@ class HomePage extends StatelessWidget {
             },
             style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.only(left: 30, right: 30)),
-            child: Text('Start'),
+            child: Text(
+              'Start',
+              style: TextStyle(fontSize: 24),
+            ),
           ),
         )),
       ),
