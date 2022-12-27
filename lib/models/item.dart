@@ -1,8 +1,8 @@
 class Item {
-  late int _nim;
-  late String _nama;
-  late String _alamat;
-  late String _jeniskelamin;
+  int _nim;
+  String _nama;
+  String _alamat;
+  String _jeniskelamin;
 
   int get nim => this._nim;
 
