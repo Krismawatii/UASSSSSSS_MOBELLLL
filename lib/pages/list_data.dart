@@ -29,7 +29,7 @@ class _ListData extends State<ListData> {
   }
 
   Future<void> _delete(int id) async {
-    print(id);
+    // print(id);
     await DbHelper.delete(id);
   }
 
@@ -69,6 +69,7 @@ class _ListData extends State<ListData> {
                         Text('NIM : ${_biodata[index].nim}'),
                       ],
                     )),
+                onTap: () {},
               ),
             );
           },
