@@ -16,6 +16,7 @@ class HomePage extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFF151026),
           title: Text("KELOMPOK 3"),
         ),
         body: Center(
