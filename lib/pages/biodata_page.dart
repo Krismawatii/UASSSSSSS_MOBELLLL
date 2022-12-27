@@ -136,12 +136,25 @@ class _BiodataPage extends State<BiodataPage> {
               margin: const EdgeInsets.only(top: 20),
               child: ElevatedButton(
                 onPressed: () {
-                  addItem(Item(
+                  DbHelper.insert(Item(
                     int.parse(nimController.text),
                     namaController.text,
                     alamatController.text,
                     _gender.toString() == 'Gender.male' ? 'L' : 'P',
                   ));
+                  showDialog(
+                      context: context,
+                      builder: (ctx) => AlertDialog(
+                            title: const Text("Success"),
+                            content: const Text("Data Berhasil Ditambahkan"),
+                            actions: <Widget>[
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(ctx);
+                                  },
+                                  child: const Text("OK"))
+                            ],
+                          ));
                 },
                 style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.only(left: 30, right: 30)),
@@ -150,41 +163,6 @@ class _BiodataPage extends State<BiodataPage> {
           // ~~~~~~~~~~~~~~ End of Radio Button ~~~~~~~~~~~~~~~~~~~
         ],
       ),
-    );
-  }
-
-  Future<void> addItem(Item item) async {
-    print('Data Berhasil Disimpan');
-    int result = await DbHelper.insert(item);
-    if (!mounted) return;
-    if (result > 0) {
-      ShowAlertDialog(context);
-      nimController.text = '';
-      namaController.text = '';
-      alamatController.text = '';
-    }
-  }
-
-  ShowAlertDialog(BuildContext context) {
-    // Item item;
-    // Widget ButtonOk = MaterialButton(
-    //   child: Text("OKE"),
-    //   onPressed: () {},
-    // );
-
-    AlertDialog alert = const AlertDialog(
-      title: Text("Success"),
-      content: Text("Data berhasil ditambahkan"),
-      actions: [
-        // ButtonOk,
-      ],
-    );
-
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
     );
   }
 }

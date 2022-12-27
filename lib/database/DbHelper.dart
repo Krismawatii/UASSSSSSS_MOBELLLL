@@ -15,7 +15,7 @@ class DbHelper {
   DbHelper._createObject();
 
   static Future<db.Database> initDb() async {
-    String path = 'item1.db';
+    String path = 'item2.db';
 
     //create,read database
     var itemDatabase = db.openDatabase(path, version: 8,

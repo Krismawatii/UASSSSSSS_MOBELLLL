@@ -16,6 +16,7 @@ class HomePage extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFF151026),
           title: Text("KELOMPOK 3"),
         ),
         body: Center(
@@ -31,7 +32,10 @@ class HomePage extends StatelessWidget {
             },
             style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.only(left: 30, right: 30)),
-            child: Text('Start'),
+            child: Text(
+              'Start',
+              style: TextStyle(fontSize: 24),
+            ),
           ),
         )),
       ),

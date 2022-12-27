@@ -4,6 +4,7 @@ import 'package:uas_kelompok3/pages/list_data.dart';
 
 class TabPage extends StatelessWidget {
   // const TabPage({super.key});
+  // const primaryColor = Color
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +14,7 @@ class TabPage extends StatelessWidget {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
+            backgroundColor: Color(0xFF151026),
             title: const Text("UAS KELOMPOK 3"),
             bottom: const TabBar(
               tabs: <Widget>[
