@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:uas_kelompok3/database/DbHelper.dart';
 import 'package:uas_kelompok3/models/item.dart';
 import 'package:uas_kelompok3/pages/biodata_page.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ListData extends StatefulWidget {
   const ListData({
@@ -30,9 +31,52 @@ class _ListData extends State<ListData> {
     });
   }
 
+  Future<void> _delete(int id) async {
+    print(id);
+    await DbHelper.delete(id);
+  }
+
   @override
   Widget build(BuildContext context) {
-    var items = DbHelper.getItemList();
+    Expanded(
+        child: FutureBuilder(
+      future: _getBiodata(),
+      builder: (context, snapshot) {
+        return ListView.builder(
+          itemCount: _biodata.length,
+          itemBuilder: (context, index) {
+            return Card(
+              child: ListTile(
+                leading: IconButton(
+                  icon: Icon(Icons.person),
+                  onPressed: (() {}),
+                ),
+                trailing: IconButton(
+                  icon: Icon(Icons.delete),
+                  onPressed: (() {
+                    Fluttertoast.showToast(
+                      msg: "Success Delete",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
+                      backgroundColor: Colors.white,
+                      textColor: Colors.black,
+                    );
+                    // _delete(_biodata[index].id);
+                  }),
+                ),
+                title: Text(_biodata[index].nama),
+                subtitle: Padding(
+                    child: Column(
+                  children: [
+                    Text('NIM : ${_biodata[index].nim}'),
+                  ],
+                )),
+              ),
+            );
+          },
+        );
+      },
+    ));
 
     return Scaffold(
       body: ListView.builder(
