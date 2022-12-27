@@ -58,7 +58,7 @@ class _ListData extends State<ListData> {
                       backgroundColor: Colors.white,
                       textColor: Colors.black,
                     );
-                    // _delete(_biodata[index].id);
+                    _delete(_biodata[index].nim);
                   }),
                 ),
                 title: Text(_biodata[index].nama),

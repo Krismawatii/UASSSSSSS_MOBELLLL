@@ -136,7 +136,7 @@ class _BiodataPage extends State<BiodataPage> {
               margin: const EdgeInsets.only(top: 20),
               child: ElevatedButton(
                 onPressed: () {
-                  DbHelper.insert(Item(
+                  addItem(Item(
                     int.parse(nimController.text),
                     namaController.text,
                     alamatController.text,
@@ -159,21 +159,24 @@ class _BiodataPage extends State<BiodataPage> {
     if (!mounted) return;
     if (result > 0) {
       ShowAlertDialog(context);
+      nimController.text = '';
+      namaController.text = '';
+      alamatController.text = '';
     }
   }
 
   ShowAlertDialog(BuildContext context) {
-    Item item;
-    Widget ButtonOk = MaterialButton(
-      child: Text("OKE"),
-      onPressed: () {},
-    );
+    // Item item;
+    // Widget ButtonOk = MaterialButton(
+    //   child: Text("OKE"),
+    //   onPressed: () {},
+    // );
 
-    AlertDialog alert = AlertDialog(
+    AlertDialog alert = const AlertDialog(
       title: Text("Success"),
       content: Text("Data berhasil ditambahkan"),
       actions: [
-        ButtonOk,
+        // ButtonOk,
       ],
     );
 
