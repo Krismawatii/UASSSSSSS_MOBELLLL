@@ -17,13 +17,18 @@ class ListData extends StatefulWidget {
   final String nama;
 
   @override
-  State<ListData> createState() => _ListData(nim, nama);
+  State<ListData> createState() => _ListData();
 }
 
 class _ListData extends State<ListData> {
-  _ListData(String nim, String nama);
+  List<Item> _biodata = [];
 
-  List<Item> _items = <Item>[];
+  Future<void> _getBiodata() async {
+    List<Item> biodata = await DbHelper.getItemList();
+    setState(() {
+      _biodata = biodata;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +36,7 @@ class _ListData extends State<ListData> {
 
     return Scaffold(
       body: ListView.builder(
-          itemCount: items.length,
+          itemCount: _biodata.length,
           itemBuilder: (context, index) {
             return Card(
                 child: ListTile(
@@ -40,7 +45,7 @@ class _ListData extends State<ListData> {
                 onPressed: () {},
               ),
               title: Row(children: <Widget>[
-                Text(items[index].nim),
+                Text(_biodata[index].nama),
                 IconButton(
                   icon: Icon(Icons.search),
                   onPressed: () {},
