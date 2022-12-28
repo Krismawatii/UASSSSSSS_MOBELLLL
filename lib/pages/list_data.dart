@@ -69,7 +69,7 @@ class _ListData extends State<ListData> {
                   _biodata[index].nama,
                   style: TextStyle(fontSize: 20),
                 ),
-                subtitle: Text('NIM : ${_biodata[index].id}'),
+                subtitle: Text('NIM : ${_biodata[index].nim}'),
                 onTap: () {
                   Navigator.push(
                     context,
