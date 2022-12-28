@@ -60,30 +60,30 @@ class _detailPage extends State<Detail> {
         body: Column(
           children: [
             Container(
-              margin: const EdgeInsets.only(left: 100, right: 100, top: 80),
+              margin: const EdgeInsets.only(left: 125, right: 100, top: 80),
               child: const Icon(
                 Icons.person,
                 size: 150,
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(left: 100, right: 100, top: 20),
+              margin: const EdgeInsets.only(left: 125, right: 100, top: 20),
               child: Text(_nim.toString()),
             ),
             Container(
-              margin: const EdgeInsets.only(left: 100, right: 100, top: 20),
+              margin: const EdgeInsets.only(left: 125, right: 100, top: 20),
               child: Text(_nama.toString()),
             ),
             Container(
-              margin: const EdgeInsets.only(left: 100, right: 100, top: 20),
+              margin: const EdgeInsets.only(left: 125, right: 100, top: 20),
               child: Text(_alamat.toString()),
             ),
             Container(
-              margin: const EdgeInsets.only(left: 100, right: 100, top: 20),
+              margin: const EdgeInsets.only(left: 125, right: 100, top: 20),
               child: Text(_jeniskelamin.toString()),
             ),
             Container(
-              margin: const EdgeInsets.only(left: 100, right: 100, top: 20),
+              margin: const EdgeInsets.only(left: 125, right: 100, top: 20),
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(

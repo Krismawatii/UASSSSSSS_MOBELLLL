@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(0xFF151026),
-          title: Text("KELOMPOK 3"),
+          title: const Text("KELOMPOK 3"),
         ),
         body: Center(
             child: SizedBox(
@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => TabPage()),
+                MaterialPageRoute(builder: (context) => const TabPage()),
               );
             },
             style: ElevatedButton.styleFrom(
